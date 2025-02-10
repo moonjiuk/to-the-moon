@@ -1,0 +1,548 @@
+/* #region theme */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+$color-title: #fff;
+$color-sub: #999;
+$color-h1: #8c8c8c;
+$color-link: #000;
+$color-bg: #000;
+$font-family: 'Lato','Chosunilbo_myungjo';
+$image-width-max: 500px;
+/* #endregion */
+
+
+/* #region setting */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000000;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+/* #endregion */
+
+
+/* #region nav */
+nav {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  transform: translate(0, -50%);
+  
+  li {
+    margin-top: 20px;
+    transition: .2s;
+
+    &.active {
+      transform: scale(1.2);
+
+      a > img {
+        filter: brightness(1);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    a > img{
+      display: block;
+      width: 4vh;
+      height: 4vh;
+      filter: brightness(0.7);
+    }
+  }
+}
+/* #endregion */
+
+
+/* #region BGM */
+#bgm {
+  z-index: 1000;
+  position: fixed;
+  top: 2vh;
+  transform: translate(50%);
+
+  button {
+    height: 4vh;
+    padding: 0 1vh;
+    border: 1px solid $color-title;
+    border-radius: 1vh;
+    background-color: #000;
+    color: $color-title;
+  }
+}
+/* #endregion */
+
+
+/* #region Moon Intro */
+#moon-intro {
+  overflow: hidden;
+
+  h1 {
+    font-size: 18vh;
+    color: $color-h1;
+    margin: 4vw 0vw 0 8vw;
+    font-weight: 100;
+
+    em {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 24vh;
+      padding-left: 20vh;
+      transform: translate(40vh, 0);
+      transition: all 2s ease;
+
+      &.active {
+        transform: translate(0, 0);
+      }
+    }
+  }
+
+  img {
+    width: 100vw;
+    transform: translate(0, 50vh);
+    transition: all 4s ease;
+
+    &.active {
+      transform: translate(0, 0);
+    }
+  }
+}
+/* #endregion */
+
+
+/* #region Moon Terrain */
+#moon-terrain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+
+  img {
+    width: 500px;
+    height: 500px;
+  }
+
+  .description{
+    width: 500px;
+    height: 500px;
+
+    .line{
+      opacity: 0;
+      position: absolute;
+      height: 100px;
+      transform: translate(calc(-100% - 20px), 30px);
+      transition: all .5s .2s ease;
+  
+      &.active {
+        opacity: 1;
+      }
+  
+      .diagonal{
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        transform: translate(50px, 20.71px) rotate(-45deg);
+        border-top: 1px solid white;
+      }
+  
+      .horizon{
+        display: inline-block;
+        height: 100px;
+        border-top: 1px solid white;
+      }
+    }
+  
+    h1 {
+      opacity: 0;
+      margin-top: 30px;
+      font-size: 40px;
+      font-weight: 400;
+      color: $color-title;
+      transform: translate(100px, 0);
+      transition: all .5s .5s ease;
+  
+      &.active {
+          opacity: 1;
+          transform: translate(-5px, 0);
+      }
+  
+      em {
+        opacity: 0;
+        font-size: 25px;
+        color: $color-h1;
+        transition: all .5s .6s ease;
+        transform: translate(100px, 0);
+  
+        &.active {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+    }
+  
+    p {
+      opacity: 0;
+      margin-top: 10px;
+      padding-left: 10px;
+      color: $color-sub;
+      line-height: 25px;
+      transform: translate(0, 100px);
+      transition: all .5s 1s ease;
+  
+      &.active {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    /* #region line 가로 길이 설정 */
+    .sea {
+      .horizon {
+        width: 300px;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+    }
+
+    .mountain {
+      .horizon {
+        width: 200px;
+      }
+    }
+    
+    .craters {
+      .horizon {
+        width: 280px;
+      }
+    }
+    /* #endregion */
+  }
+}
+/* #endregion */
+
+
+/* #region Moon Card */
+#moon-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .moon-card {
+    position: relative;
+    width: 70vh;
+    height: 70vh;
+  
+    &:hover {
+      .moon-card-front {
+        transform: rotateY(180deg);
+      }
+      .moon-card-back {
+        z-index: 1;
+        transform: rotateY(0deg);
+      }
+    }
+  
+    .moon-card-front {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: rotateY(0deg);
+      backface-visibility: hidden;
+      transition: all .8s ease-in-out;
+      
+      .star {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: 1px solid $color-title;
+        border-radius: 3%;
+      }
+      .moon-front{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        transform: translate(-50%, -50%) translateZ(100px);
+      }
+      figcaption {
+        position: absolute;
+        bottom: 10%;
+        left: 70%;
+        font-size: 8vh;
+        font-weight: lighter;
+        color: $color-title;
+        transform: translate(-50%, -50%) translateZ(200px);
+      }
+    }
+    .moon-card-back {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: rotateY(-180deg);
+      backface-visibility: hidden;
+      transition: all .8s ease-in-out;
+  
+      .star {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: 1px solid $color-title;
+        border-radius: 3%;
+      }
+      .moon-back{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        transform: translate(-50%, -50%) translateZ(100px);
+      }
+      .earth {
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        transform: translateZ(50px);
+      }
+      figcaption {
+        position: absolute;
+        bottom: 10%;
+        left: 70%;
+        font-size: 8vh;
+        font-weight: lighter;
+        color: $color-title;
+        transform: translate(-50%, -50%) translateZ(200px);
+      }
+    }
+  }
+}
+/* #endregion */
+
+
+/* #region Moon 3D */
+#moon-3d {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .canvas-container {
+    width: 70vw;
+    height: 70vh;
+    border: 1px solid $color-title;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+/* #endregion */
+
+
+/* #region Chat Room */
+#chat {
+  h2 {
+      font-size: 40px;
+      color: $color-title;
+  }
+
+  .chatroom {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      border: 1px solid $color-title;
+      border-radius: 8px;
+      overflow: overlay;
+      color: $color-title;
+
+      &::-webkit-scrollbar {
+          width: 8px;
+      }
+      &::-webkit-scrollbar-thumb {
+          height: 30%; /* 스크롤바의 길이 */
+          background: $color-sub; /* 스크롤바의 색상 */
+          border-radius: 10px;
+      }
+      ul {
+          margin: 80px;
+
+          li {
+              padding: 10px;
+              margin: 15px;
+
+              &.myChat {
+                  float: right;
+
+                  .chatInfo {
+                      text-align: right;
+
+                      .userName {
+                          float: right;
+                      }
+                  }
+              }
+              .chatInfo {
+                  .userName {
+                      font-size: 20px;
+                  }
+                  .chatTime {
+                      margin: 0px 5px;
+                      font-size: 10px;
+                  }
+              }
+              .chat {
+                  display: inline-block;
+                  padding: 10px;
+                  margin: 10px;
+                  border: 1px solid $color-title;
+                  border-radius: 8px;
+                  line-height: 25px;
+              }
+          }
+      }
+  }
+
+  .chatInput {
+      width: 60%;
+      height: 50px;
+      margin: 0px auto;
+      border: 1px solid $color-title;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+
+      input {
+          display: inline-block;
+          width: 80%;
+          height: 100%;
+          padding-left: 20px;
+          margin: 0;
+          background-color: #000;
+          color: $color-title;
+          font-size: 15px;
+          border: none;
+          outline: none;
+      }
+      button {
+          display: block;
+          float: right;
+          width: 10%;
+          height: 100%;
+          margin: 0;
+          border: none;
+          border-left: 1px solid $color-title;
+          background-color: #000;
+          color: white;
+
+          img {
+              width: 90%;
+          }
+      }
+  }
+}
+/* #endregion */
+
+
+/* #region 반응형 */
+@media screen and (max-width: 1440px) {
+  #moon-terrain {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 50px;
+    padding: 100px 0;
+    height: auto;
+  
+    .description{
+      height: auto;
+  
+      .line{
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    a > img{
+      width: 4vw;
+      height: 4vw;
+    }
+  }
+
+  #moon-intro {
+    h1 {
+      font-size: 18vw;
+
+      em {
+        font-size: 24vw;
+        padding-left: 0;
+      }
+    }
+  }
+
+  #moon-terrain {
+    gap: 10vw;
+  
+    img {
+      width: 60vw;
+      height: 60vw;
+    }
+  
+    .description{
+      width: 60vw;
+
+      h1 {
+        em {
+          display: block;
+          padding-left: 10px;
+        }
+      }
+
+      p {
+        margin-top: 0px;
+      }
+    }
+  }
+
+  #moon-card{
+    .moon-card {
+      width: 70vw;
+      height: 70vw;
+
+      .moon-card-front {
+        figcaption {
+          font-size: 8vw;
+        }
+      }  
+
+      .moon-card-back {
+        figcaption {
+          font-size: 8vw;
+        }
+      }
+    }
+  }
+
+  #moon-3d {
+    .canvas-container {
+      width: 70vw;
+      height: 70vh;
+    }
+  }
+}
+/* #endregion */

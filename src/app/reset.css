@@ -1,0 +1,59 @@
+/* Resetting the margin, padding, and box-sizing */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* Removing list styles */
+ol, ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Removing link text decoration */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Resetting table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Resetting images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Resetting form elements */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  outline: none;
+  appearance: none;
+}
+
+/* Default body styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #000;
+  min-height: 100vh;
+}
