@@ -1,6 +1,6 @@
 # 🌙 To the Moon
 
-[![사이트 미리보기](readme-images/moon-intro.png)](https://to-the-moon-ashen.vercel.app)
+[![사이트 미리보기](readme-images/link.png)](https://to-the-moon-ashen.vercel.app)
 
 
 
