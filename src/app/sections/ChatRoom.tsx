@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 export default function ChatRoom() {
   const [messages, setMessages] = useState<any[]>([]);
   const [input, setInput] = useState("");
-  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(false); //3초 쿨타임
 
   useEffect(() => {
     const q = query(collection(db, "messages"), orderBy("timestamp"));
@@ -26,8 +26,8 @@ export default function ChatRoom() {
   const sendMessage = async () => {
     if (!input.trim() || isSending) return;
 
-    setIsSending(true);
-    const alignment = Math.random() > 0.5 ? "left" : "right";
+    setIsSending(true);//3초 쿨타임
+    const alignment = Math.random() > 0.5 ? "left" : "right"; //무작위로 채팅 좌, 우 배치
     await addDoc(collection(db, "messages"), {
       text: input,
       timestamp: serverTimestamp(),
@@ -36,6 +36,7 @@ export default function ChatRoom() {
 
     setInput("");
 
+    //3초 쿨타임
     setTimeout(() => {
       setIsSending(false);
     }, 3000);
