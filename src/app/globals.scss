@@ -1,4 +1,4 @@
-/* #region theme */
+/* theme */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 $color-title: #fff;
 $color-sub: #999;
@@ -7,10 +7,10 @@ $color-link: #000;
 $color-bg: #000;
 $font-family: 'Lato','Chosunilbo_myungjo';
 $image-width-max: 500px;
-/* #endregion */
+/* theme */
 
 
-/* #region setting */
+/* setting */
 html {
   scroll-behavior: smooth;
 }
@@ -24,10 +24,10 @@ section {
   height: 100vh;
   overflow: hidden;
 }
-/* #endregion */
+/* setting */
 
 
-/* #region nav */
+/* nav */
 nav {
   z-index: 1000;
   position: fixed;
@@ -59,10 +59,10 @@ nav {
     }
   }
 }
-/* #endregion */
+/* nav */
 
 
-/* #region BGM */
+/* BGM */
 #bgm {
   z-index: 1000;
   position: fixed;
@@ -78,10 +78,10 @@ nav {
     color: $color-title;
   }
 }
-/* #endregion */
+/* BGM */
 
 
-/* #region Moon Intro */
+/* Moon Intro */
 #moon-intro {
   overflow: hidden;
 
@@ -117,10 +117,10 @@ nav {
     }
   }
 }
-/* #endregion */
+/* Moon Intro */
 
 
-/* #region Moon Terrain */
+/* Moon Terrain */
 #moon-terrain {
   display: flex;
   justify-content: center;
@@ -230,10 +230,10 @@ nav {
     /* #endregion */
   }
 }
-/* #endregion */
+/* #Moon Terrain */
 
 
-/* #region Moon Card */
+/* Moon Card */
 #moon-card{
   display: flex;
   justify-content: center;
@@ -333,10 +333,10 @@ nav {
     }
   }
 }
-/* #endregion */
+/* Moon Card */
 
 
-/* #region Moon 3D */
+/* Moon 3D */
 #moon-3d {
   display: flex;
   justify-content: center;
@@ -350,114 +350,97 @@ nav {
     overflow: hidden;
   }
 }
-/* #endregion */
+/* Moon 3D */
 
 
-/* #region Chat Room */
-#chat {
+/* Chat Room */
+#chat-room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $color-title;
+
   h2 {
-      font-size: 40px;
-      color: $color-title;
+    font-size: 40px;
+    margin-bottom: 10px;
   }
 
-  .chatroom {
-      position: relative;
-      width: 100%;
-      height: 600px;
-      border: 1px solid $color-title;
-      border-radius: 8px;
-      overflow: overlay;
-      color: $color-title;
+  .chat-box {
+    width: 70vw;
+    height: 70vh;
+    border: 1px solid $color-title;
+    border-radius: 15px;
+    overflow: auto;
 
-      &::-webkit-scrollbar {
-          width: 8px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin: 30px;
+
+      li {
+        width: fit-content;
+        max-width: 40vw;
+        word-break: break-word;
+        border: 1px solid $color-h1;
+        margin-bottom: 30px;
+        padding: 10px;
+        text-align: center;
+
+        &.left {
+          align-self: flex-start;  
+          border-radius: 15px 15px 15px 0;
+        }
+      
+        &.right {
+          align-self: flex-end;   
+          border-radius: 15px 15px 0 15px;
+        }
       }
-      &::-webkit-scrollbar-thumb {
-          height: 30%; /* 스크롤바의 길이 */
-          background: $color-sub; /* 스크롤바의 색상 */
-          border-radius: 10px;
-      }
-      ul {
-          margin: 80px;
-
-          li {
-              padding: 10px;
-              margin: 15px;
-
-              &.myChat {
-                  float: right;
-
-                  .chatInfo {
-                      text-align: right;
-
-                      .userName {
-                          float: right;
-                      }
-                  }
-              }
-              .chatInfo {
-                  .userName {
-                      font-size: 20px;
-                  }
-                  .chatTime {
-                      margin: 0px 5px;
-                      font-size: 10px;
-                  }
-              }
-              .chat {
-                  display: inline-block;
-                  padding: 10px;
-                  margin: 10px;
-                  border: 1px solid $color-title;
-                  border-radius: 8px;
-                  line-height: 25px;
-              }
-          }
-      }
+    }
   }
 
-  .chatInput {
-      width: 60%;
-      height: 50px;
-      margin: 0px auto;
-      border: 1px solid $color-title;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-      overflow: hidden;
+  .chat-input {
+    position: relative;
+    width: 40vw;
+    height: 40px;
+    border: 1px solid $color-title;
+    border-top: 0;
+    border-radius: 0 0 15px 15px;
 
-      input {
-          display: inline-block;
-          width: 80%;
-          height: 100%;
-          padding-left: 20px;
-          margin: 0;
-          background-color: #000;
-          color: $color-title;
-          font-size: 15px;
-          border: none;
-          outline: none;
-      }
-      button {
-          display: block;
-          float: right;
-          width: 10%;
-          height: 100%;
-          margin: 0;
-          border: none;
-          border-left: 1px solid $color-title;
-          background-color: #000;
-          color: white;
+    input {
+      width: calc(40vw - 80px);
+      height: 100%;
+      padding: 0 20px;
+      color: $color-h1;
+    }
 
-          img {
-              width: 90%;
-          }
+    button {
+      position: absolute;
+      right: 0;
+      width: 80px;
+      height: 100%;
+      border-left: 1px solid $color-title;
+      border-radius: 0 0 15px 0;
+      color: $color-title;
+
+      &:hover {
+        font-size: 25px;
+        transition: all .1s ease-in-out;
       }
+    }
   }
 }
-/* #endregion */
+/* Chat Room */
 
 
-/* #region 반응형 */
+/* 반응형 */
 @media screen and (max-width: 1440px) {
   #moon-terrain {
     flex-direction: column;
@@ -544,5 +527,19 @@ nav {
       height: 70vh;
     }
   }
+
+  #chat-room {
+    .chat-box {
+      border-radius: 15px 15px 0 0 ;
+    }
+
+    .chat-input {
+      width: 70vw;
+  
+      input {
+        width: calc(70vw - 80px);
+      }
+    }
+  }
 }
-/* #endregion */
+/* 반응형 */

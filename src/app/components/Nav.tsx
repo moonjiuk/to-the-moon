@@ -20,6 +20,9 @@ export default function Nav({ activeSection }: NavProps) {
         <li className={activeSection === 'moon-3d' ? 'active' : ''}>
           <Link href="#moon-3d"><img src='assets/images/moon-nav.png' alt='Moon 3D' /></Link>
         </li>
+        <li className={activeSection === 'chat-room' ? 'active' : ''}>
+          <Link href="#chat-room"><img src='assets/images/moon-nav.png' alt='Chat Room' /></Link>
+        </li>
       </ul>
     </nav>
   );

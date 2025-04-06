@@ -11,6 +11,7 @@ import MoonIntro from '@/app/sections/MoonIntro';
 import MoonTerrain from '@/app/sections/MoonTerrain';
 import MoonCard from '@/app/sections/MoonCard';
 import Moon3D from '@/app/sections/Moon3D';
+import ChatRoom from '@/app/sections/ChatRoom';
 
 
 
@@ -59,6 +60,7 @@ export default function Home() {
       <MoonTerrain activeSection={activeSection} />
       <MoonCard />
       <Moon3D />
+      <ChatRoom />
     </>
   );
 }
