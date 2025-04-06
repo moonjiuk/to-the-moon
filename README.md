@@ -34,8 +34,8 @@ Canvas를 활용한 3D 모델링과 다양한 CSS 애니메이션을 적용하�
 - **3D 모델**: Three.js를 통해 Nasa에서 받아온 달의 3D 모델을 사용자가 직접 움직이며 확인할 수 있습니다. 시간에 따라 조금씩 움직이도록 하여 생동감을 더했습니다.
 <img src="readme-images/moon-3D.png" alt="To the Moon 미리보기" width="600px">
 
-- **실시간 채팅**: 이전에는 React 버전에서 WebSocket, Express, MongoDB를 활용하여 실시간 채팅 기능을 구현하였습니다. 그러나 Next.js로 업데이트하면서 해당 기능을 비활성화하였습니다. 현재 Next.js 13 버전 이후의 App Router 방식에서는 WebSocket을 사용하기 위해 Express를 통합하거나, 이전 버전의 Page Router 방식을 사용해야 합니다. 이러한 방법 외에도 몇 가지 대안이 있지만, 이는 Next.js 13 버전 이후의 App Router 방식의 장점을 활용하지 못하게 합니다. 따라서, Next.js에서 이 부분이 기능적으로 개선될 때까지 실시간 채팅 기능을 비활성화하기로 결정하였습니다.
-<img src="readme-images/chat.png" alt="To the Moon 미리보기" width="600px">
+- **실시간 채팅**: 이전에는 React 버전에서 WebSocket, Express, MongoDB를 활용하여 실시간 채팅 기능을 구현하였습니다. 하지만 서버리스인 Next.js와 실시간 연결인 WebSocket은 구조적으로 맞지 않고, 직접적으로 사용할 수 있는 방법도 없습니다. 우회적으로 구현하는 방법은 WebSocket용 서버를 따로 사용하는 것이지만, 이러면 Next.js를 사용하는 의미가 희석됩니다. 이러한 문제를 해결하기 위해서는 서드파티 서비스를 이용하는것이 좋다고 생각합니다. 저는 실시간 채팅 부분을 클라이언트에서 렌더링 하고,  Firebase의 database와 통신하게 하여 문제를 해결하였습다. 이렇게 하면 Next.js의 서버사이드 렌더링의 장점을 활용하면서 실시간 채팅 기능을 구현할 수 있습니다.
+<img src="readme-images/chat-room.png" alt="To the Moon 미리보기" width="600px">
 
 
 
