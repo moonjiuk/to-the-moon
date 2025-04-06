@@ -7,18 +7,34 @@ import {
   orderBy,
   query,
   serverTimestamp,
+  Timestamp,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
+// ✅ 메시지 타입 정의
+interface Message {
+  text: string;
+  timestamp: Timestamp | null;
+  alignment: "left" | "right";
+}
+
 export default function ChatRoom() {
-  const [messages, setMessages] = useState<any[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
-  const [isSending, setIsSending] = useState(false); //3초 쿨타임
+  const [isSending, setIsSending] = useState(false); // 3초 쿨타임
 
   useEffect(() => {
     const q = query(collection(db, "messages"), orderBy("timestamp"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      setMessages(snapshot.docs.map((doc) => doc.data()));
+      const msgs: Message[] = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          text: data.text,
+          timestamp: data.timestamp ?? null,
+          alignment: data.alignment === "right" ? "right" : "left",
+        };
+      });
+      setMessages(msgs);
     });
     return () => unsubscribe();
   }, []);
@@ -26,8 +42,9 @@ export default function ChatRoom() {
   const sendMessage = async () => {
     if (!input.trim() || isSending) return;
 
-    setIsSending(true);//3초 쿨타임
-    const alignment = Math.random() > 0.5 ? "left" : "right"; //무작위로 채팅 좌, 우 배치
+    setIsSending(true); // 3초 쿨타임
+    const alignment: "left" | "right" = Math.random() > 0.5 ? "left" : "right";
+
     await addDoc(collection(db, "messages"), {
       text: input,
       timestamp: serverTimestamp(),
@@ -36,7 +53,6 @@ export default function ChatRoom() {
 
     setInput("");
 
-    //3초 쿨타임
     setTimeout(() => {
       setIsSending(false);
     }, 3000);
@@ -63,7 +79,9 @@ export default function ChatRoom() {
           placeholder="Talk with Bunnies"
           maxLength={200}
         />
-        <button onClick={sendMessage} disabled={isSending}>Say it</button>
+        <button onClick={sendMessage} disabled={isSending}>
+          {isSending ? "Sending..." : "Say it"}
+        </button>
       </div>
     </section>
   );
