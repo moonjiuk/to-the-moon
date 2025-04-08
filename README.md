@@ -15,7 +15,7 @@ Canvas를 활용한 3D 모델링과 다양한 CSS 애니메이션을 적용하�
 - 1인 개발 (Full-Stack Development)
 
 ## 🛠️ 사용 기술
-- **Frontend**: React.js → Next.js (2025년 변경)
+- **Frontend**: React.js → Next.js (2025년 변경), LCP: 2.9초 -> 0.7초
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **3D 모델링**: Canvas API, Three.js

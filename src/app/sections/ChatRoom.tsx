@@ -60,8 +60,6 @@ export default function ChatRoom() {
 
   return (
     <section id="chat-room">
-      <h2>Chat Room</h2>
-
       <div className="chat-box">
         <ul>
           {messages.map((msg, idx) => (
