@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dpawlikowski/liquid-glass": "^0.3.0",
     "@react-three/drei": "^10.0.0-rc.1",
     "@react-three/fiber": "^9.0.0-rc.5",
     "axios": "^1.7.9",

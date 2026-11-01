@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       {/* BGM */}
-      <BGM />
+      <BGM compact={activeSection === 'chat-room'} />
       
       {/* 네비게이션 */}
       <Nav activeSection={activeSection}  />

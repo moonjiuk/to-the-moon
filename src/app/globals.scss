@@ -62,59 +62,44 @@ nav {
 /* nav */
 
 
-/* BGM */
-#bgm {
-  z-index: 1000;
-  position: fixed;
-  top: 2vh;
-  transform: translate(50%);
 
-  button {
-    height: 4vh;
-    padding: 0 1vh;
-    border: 1px solid $color-title;
-    border-radius: 1vh;
-    background-color: #000;
-    color: $color-title;
-  }
-}
-/* BGM */
 
 
 /* Moon Intro */
 #moon-intro {
+  position: relative;
   overflow: hidden;
+  background-color: #000;
 
   h1 {
-    font-size: 18vh;
-    color: $color-h1;
-    margin: 4vw 0vw 0 8vw;
-    font-weight: 100;
-
-    em {
-      display: block;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: 24vh;
-      padding-left: 20vh;
-      transform: translate(40vh, 0);
-      transition: all 2s ease;
-
-      &.active {
-        transform: translate(0, 0);
-      }
-    }
+    position: absolute; z-index: 2; top: 11vh; left: 50%; margin: 0;
+    transform: translateX(-50%); color: rgba(255,255,255,.92);
+    font-family: "Cormorant Garamond", serif; font-size: clamp(42px, 5vw, 78px);
+    font-weight: 400; line-height: 1; white-space: nowrap;
   }
 
-  img {
-    width: 100vw;
-    transform: translate(0, 50vh);
-    transition: all 4s ease;
+  .intro-earth {
+    position: absolute; z-index: 2; top: 31%; left: 50%;
+    width: clamp(54px, 6vw, 88px); transform: translateX(-50%);
+  }
+
+  .intro-moon {
+    position: absolute; z-index: 1; left: 50%; bottom: max(-82vw, -1120px);
+    width: min(110vw, 1500px); max-width: none;
+    transform: translate(-50%, 18%); opacity: 0;
+    transition: opacity 1.5s ease .2s, transform 2.4s cubic-bezier(.2,.75,.2,1);
 
     &.active {
-      transform: translate(0, 0);
+      transform: translate(-50%, 0); opacity: 1;
     }
+  }
+}
+
+@media (max-width: 600px) {
+  #moon-intro {
+    h1 { top: 15.5%; font-size: 31px; }
+    .intro-earth { top: 25%; width: 68px; }
+    .intro-moon { bottom: -84vw; width: 148vw; }
   }
 }
 /* Moon Intro */
@@ -464,17 +449,6 @@ nav {
     a > img{
       width: 4vw;
       height: 4vw;
-    }
-  }
-
-  #moon-intro {
-    h1 {
-      font-size: 18vw;
-
-      em {
-        font-size: 24vw;
-        padding-left: 0;
-      }
     }
   }
 

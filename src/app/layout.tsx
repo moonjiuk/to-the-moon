@@ -1,4 +1,5 @@
 import './reset.css';
+import '@dpawlikowski/liquid-glass/css';
 import "./globals.scss";
 import type { Metadata } from "next";
 

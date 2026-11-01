@@ -10,6 +10,7 @@ Canvas를 활용한 3D 모델링과 다양한 CSS 애니메이션을 적용하�
 ## 📆 프로젝트 기간
 - **초기 개발:** 2020.6 - 2020.7 (React.js 기반)
 - **업그레이드:** 2025.2 - 2025.2 (Next.js로 변경)
+- **UI 개선:** 2026.11 (반응형 인트로 및 글라스 뮤직 플레이어 개선)
 
 ## 👨‍💻 역할
 - 1인 개발 (Full-Stack Development)
@@ -20,9 +21,10 @@ Canvas를 활용한 3D 모델링과 다양한 CSS 애니메이션을 적용하�
 - **Database**: MongoDB
 - **3D 모델링**: Canvas API, Three.js
 - **CSS 애니메이션**: keyframes, transform 등 활용
+- **UI 효과**: CSS Modules, `@dpawlikowski/liquid-glass`
 
 ## 🚀 섹션별 설명
-- **인트로**:CSS transform과 transition기능을 이용한 애니메이션으로 달이 떠오르도록 하여 시각적 재미를 더했습니다. 또한 왼쪽 상단의 music on/off기능으로 드뷔시의 달빛을 즐길 수 있습니다.
+- **인트로**: CSS transform과 transition을 이용해 달이 떠오르도록 구성했습니다. 지구는 안정적으로 고정하고, 반응형 글라스 뮤직 플레이어에서 드뷔시의 「달빛」을 재생하거나 정지할 수 있습니다.
 <img src="readme-images/moon-intro.png" alt="To the Moon 미리보기" width="600px">
 
 - **달 지형 정보**: SF영화의 우주선 계기판에서 영감을 받아 물체의 정보를 표시하는 애니메이션을 설정하였습니다.
@@ -50,4 +52,5 @@ npm install
 
 # 3. 개발 서버 실행
 npm run dev
+```
 
